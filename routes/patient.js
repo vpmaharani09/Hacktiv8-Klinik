@@ -1,11 +1,13 @@
 const express = require("express");
-
+const { Patient: patienController } = require("../controllers/patientimam");
 const patientRouter = express.Router();
 
-patientRouter.get('/', (req, res) => { res.send("patient home")})
-    .get('/add', (req, res) => { })
-    .post('/add', (req, res) => {})
-    .get('/:id/edit', (req, res) => { })
-    .post('/:id/edit', (req, res) => {})
-    .get('/:id/delete', (req, res) => {})
-module.exports = {patientRouter};
+patientRouter
+	.get("/", patienController.findAllPatient)
+	.get("/add", patienController.addPatientGet)
+	.post("/add", patienController.addPatientPost)
+	.get("/:id/edit", (req, res) => {})
+	.post("/:id/edit", (req, res) => {})
+	.get("/:id/delete", (req, res) => {})
+	.post("/search", patienController.searchPatientPost);
+module.exports = { patientRouter };
