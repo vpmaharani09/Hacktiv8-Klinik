@@ -1,5 +1,5 @@
 const { Doctor, Patient: patientMOdel } = require("../models/index");
-
+const { generateNameFirstLast } = require("../helpers/helperImam");
 class Patient {
 	static findAllPatient(req, res) {
 		patientMOdel
@@ -43,9 +43,7 @@ class Patient {
 		console.log(search);
 		patientMOdel
 			.findAll({
-				where: {
-					first_name: search,
-				},
+				where: generateNameFirstLast(search),
 			})
 			.then((data) => {
 				res.render("patientAll", { data });
