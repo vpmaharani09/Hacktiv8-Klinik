@@ -1,0 +1,26 @@
+[
+    {
+        "first_name": "Uchita",
+        "last_name": "Yolanda",
+        "age":30,
+        "illness": "sakit kepala,demam,batuk"
+    },
+    {
+        "first_name": "Prayoga",
+        "last_name": "Megantara",
+        "age":25,
+        "illness": "demam,perut kembung"
+    },
+    {
+        "first_name": "Makuta",
+        "last_name": "Jailani",
+        "age":42,
+        "illness": "sakit perut,diare"
+    },
+     {
+        "first_name": "Gina",
+        "last_name": "Farida",
+        "age":23,
+        "illness": "sakit kepala,batuk"
+    }
+]
