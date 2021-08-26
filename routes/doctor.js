@@ -1,13 +1,14 @@
 const express = require("express");
+const DoctorController = require("../controllers/doctorRani");
 
 const doctorRouter = express.Router();
-const { Doctor } = require('../controllers/doktorImam');
+const { Doctor } = require("../controllers/doktorImam");
 
 doctorRouter
-	.get("/", Doctor.allFindDoctor)
-	.get("/add", (req, res) => {})
-	.post("/add", (req, res) => {})
-	.get("/:id/edit", (req, res) => {})
-	.post("/:id/edit", (req, res) => {})
-	.get("/:id/delete", (req, res) => {});
+  .get("/", Doctor.allFindDoctor)
+  .get("/add", DoctorController.addDoctor)
+  .post("/add", DoctorController.postAddDoctor)
+  .get("/appointment/:id", DoctorController.getAddAppointment)
+  .post("/appointment/:id", DoctorController.postAddAppointment);
+
 module.exports = { doctorRouter };

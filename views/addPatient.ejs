@@ -1,12 +1,14 @@
-<%- include("part/header.ejs",{data:"Add Cast"}) %>
+<%- include("part/header.ejs") %>
 <form action="/patient/add" method="POST">
-	<label for="fname">First name:</label><br />
-	<input type="text" id="fname" name="first_name" /><br />
-	<label for="lname">Last name:</label><br />
-	<input type="text" id="lname" name="last_name" /><br /><br />
-	<label for="age">Age:</label><br />
-	<input type="number" id="age" name="age" /><br /><br />
-	<input type="submit" value="Submit" />
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="first_name" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="last_name" /><br /><br />
+  <label for="age">Age:</label><br />
+  <input type="number" id="age" name="age" /><br /><br />
+  <label for="Illness">Illness:</label><br />
+  <input type="text" id="Illness" name="Illness" /><br /><br />
+  <input type="submit" value="Submit" />
 </form>
 <!-- Optional JavaScript; choose one of the two! -->
 <%- include("part/footer.ejs") %>

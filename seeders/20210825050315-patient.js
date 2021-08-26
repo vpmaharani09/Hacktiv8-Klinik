@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 const fs = require("fs");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -10,13 +10,13 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
     let data = JSON.parse(fs.readFileSync("./patient.json", "utf-8"));
-    data.forEach(element => {
+    data.forEach((element) => {
       element.createdAt = new Date();
       element.updatedAt = new Date();
     });
-    console.log(data , "data<<")
+    // console.log(data , "data<<")
     return queryInterface.bulkInsert("Patients", data);
   },
 
@@ -28,5 +28,5 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     return queryInterface.bulkDelete("Patients", null, {});
-  }
+  },
 };
