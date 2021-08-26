@@ -1,0 +1,28 @@
+<%- include("part/header.ejs",{data:"Add Cast"}) %>
+
+<table style="width: 100%">
+	<tr>
+		<th>ID</th>
+		<th>Nama Dokter</th>
+		<th>Spesialis</th>
+		<th>Total pasien</th>
+		<th>Action</th>
+	</tr>
+	<% for( let i = 0; i < data.length; i++ ) { %>
+
+	<tr>
+		<td><%= i+1 %></td>
+		<td><%= data[i].name %></td>
+		<td><%= data[i].specialist %></td>
+		<td><%= data[i].Patients.length %> </td>
+		<td>
+			<a href="#">make Appointment</a>
+		</td>
+	</tr>
+
+	<% } %>
+</table>
+
+<a href="/patient">back</a>
+<!-- Optional JavaScript; choose one of the two! -->
+<%- include("part/footer.ejs") %>

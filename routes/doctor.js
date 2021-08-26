@@ -1,11 +1,10 @@
 const express = require("express");
 
 const doctorRouter = express.Router();
+const { Doctor } = require('../controllers/doktorImam');
 
 doctorRouter
-	.get("/", (req, res) => {
-		res.render("web");
-	})
+	.get("/", Doctor.allFindDoctor)
 	.get("/add", (req, res) => {})
 	.post("/add", (req, res) => {})
 	.get("/:id/edit", (req, res) => {})
