@@ -2,17 +2,24 @@ const { Patient } = require("../models");
 
 class PatientController {
   static getEditPatient(req, res) {
+    const id = req.params.id;
     let errors = null;
 
     if (req.query.errors) {
       errors = req.query.errors.split(",\n");
     }
 
-    res.render("editPatient", errors);
+    Patient.findByPk(id)
+      .then((data) => {
+        res.render("editPatient", { data, errors });
+        // res.send(data);
+      })
+      .catch((err) => res.send(err));
   }
 
   static postEditPatient(req, res) {
     const id = req.params.id;
+    console.log(req.body);
     let { first_name, last_name, age, illness } = req.body;
 
     Patient.update(
@@ -24,10 +31,24 @@ class PatientController {
       },
       {
         where: {
-          id,
+          id: id,
         },
       }
     )
+
+      //   .then((data) => res.send(data))
+      .then(() => res.redirect("/patient"))
+      .catch((err) => res.send(err));
+  }
+
+  static deletePatient(req, res) {
+    const id = req.params.id;
+
+    Patient.destroy({
+      where: {
+        id: id,
+      },
+    })
       .then(() => res.redirect("/patient"))
       .catch((err) => res.send(err));
   }

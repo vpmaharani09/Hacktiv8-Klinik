@@ -7,8 +7,8 @@ patientRouter
   .get("/", patienController.findAllPatient)
   .get("/add", patienController.addPatientGet)
   .post("/add", patienController.addPatientPost)
-  .get("/:id/edit", (req, res) => {})
-  .post("/:id/edit", (req, res) => {})
-  .get("/:id/delete", (req, res) => {})
+  .get("/:id/edit", PatientController.getEditPatient)
+  .post("/:id/edit", PatientController.postEditPatient)
+  .get("/:id/delete", PatientController.deletePatient)
   .post("/search", patienController.searchPatientPost);
 module.exports = { patientRouter };
