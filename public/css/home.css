@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* STYLE BAGIAN NAVBAR */
+
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: right;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+nav ul {
+  list-style: none;
+  display: inline;
+  padding: 20px 10px;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+}
+
+.logo {
+  float: left;
+  padding: 5px;
+  margin: 25px;
+}
+
+.container {
+  background: #fff;
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  position: fixed;
+}
+
+.container.top {
+  background: #333;
+}
+
+.container.top a {
+  padding: 10px 50px;
+  margin: 0 5px;
+}
+
+.container.top a:hover {
+  border-bottom: rgb(196, 0, 0) 2px solid;
+}
+
+.container.top ul {
+  display: flex;
+  float: right;
+  margin-right: 30px;
+}
+
+/* COVER */
+
+.cover {
+  background: url("/public/css/images/ww.jpg") no-repeat center center/cover;
+  height: 100vh;
+  position: relative;
+}
+
+/* text n button */
+
+.cover .content {
+  display: flex;
+  float: right;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+  margin-right: 80px;
+}
+
+.cover .content h1 {
+  margin-bottom: 20px;
+  font-size: 55px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  color: #333;
+}
+
+.cover .content p {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 10px 0 10px;
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* button */
+
+.button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 10px 10px;
+  background-color: #c90606;
+  border: none;
+  color: #fff;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+/* menu style */
+
+.text {
+  margin: 20px 20px 80px;
+  padding: 15px 10px 0;
+}
+
+.text h1 {
+  margin-bottom: 15px 0 10px;
+  font-family: "Great Vibes", cursive;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.text p1 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 0 40px;
+  font-weight: 600;
+}

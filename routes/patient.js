@@ -10,5 +10,6 @@ patientRouter
   .get("/:id/edit", PatientController.getEditPatient)
   .post("/:id/edit", PatientController.postEditPatient)
   .get("/:id/delete", PatientController.deletePatient)
-  .post("/search", patienController.searchPatientPost);
+  .post("/search", patienController.searchPatientPost)
+  .get("/myCards/:id", PatientController.getCards);
 module.exports = { patientRouter };

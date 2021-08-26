@@ -1,0 +1,22 @@
+<%- include("part/header.ejs") %>
+<form action="/doctor/add" method="POST">
+  <label for="fname">Name:</label><br />
+  <input type="text" name="name" /><br />
+  <label>Gender</label>
+  <br />
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="gender" value="female" />
+    <label class="form-check-label" for="inlineRadio1">female</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="gender" value="male" />
+    <label class="form-check-label" for="inlineRadio1">male</label>
+  </div>
+  <br />
+  <br />
+  <label for="age">Specialist:</label><br />
+  <input type="text" name="specialist" /><br /><br />
+  <input type="submit" value="Submit" />
+</form>
+<!-- Optional JavaScript; choose one of the two! -->
+<%- include("part/footer.ejs") %>

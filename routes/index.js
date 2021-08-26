@@ -1,13 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { doctorRouter } = require('../routes/doctor');
-const { patientRouter } = require('../routes/patient');
+const { doctorRouter } = require("../routes/doctor");
+const { patientRouter } = require("../routes/patient");
 
-router.get('/', (req, res) => {
-    res.send("home")
-})
-
-
+router.get("/", (req, res) => {
+  res.render("home");
+});
 
 router.use("/patient", patientRouter);
 router.use("/doctor", doctorRouter);

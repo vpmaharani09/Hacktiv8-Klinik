@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Carter+One&family=Fredoka+One&family=Maven+Pro:wght@400;500&family=Mulish:wght@500;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/form.css" />
+    <title>Patient Card</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="icon" style="width: 35%; display: flex">
+        <img src="/public/css/images/card.jpg" alt="logo" />
+      </div>
+      <div class="form" style="display: flex; flex-direction: column">
+        <h1>Patient Card</h1>
+        <h3>Nama : <%=data.fullName()%></h3>  
+        <% data.Doctors.forEach(el => {%>
+          <h3>appointment : <%=formatDate(el.PatientDoctor.appointment)%></h3> 
+        <h3>dokter : <p><%=el.getNameDr()%></p></h3>
+        </div>
+        <%}) %>
+        <div style="margin: 10px 10px;">
+          <a href="/patient" style="color: #fff;">Back</a>
+        </div>
+        <div style="margin: 10px;">
+          <a href="/" style="color: #fff;" >Make Reminder</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,5 @@
-const { Patient } = require("../models");
+const { Patient, Doctor } = require("../models");
+const formatDate = require("../helpers/helperRani");
 
 class PatientController {
   static getEditPatient(req, res) {
@@ -14,7 +15,7 @@ class PatientController {
         res.render("editPatient", { data, errors });
         // res.send(data);
       })
-      .catch((err) => res.send(err));
+      .catch((err) => res.send(err.message));
   }
 
   static postEditPatient(req, res) {
@@ -38,7 +39,7 @@ class PatientController {
 
       //   .then((data) => res.send(data))
       .then(() => res.redirect("/patient"))
-      .catch((err) => res.send(err));
+      .catch((err) => res.send(err.message));
   }
 
   static deletePatient(req, res) {
@@ -50,7 +51,22 @@ class PatientController {
       },
     })
       .then(() => res.redirect("/patient"))
-      .catch((err) => res.send(err));
+      .catch((err) => res.send(err.message));
+  }
+
+  static getCards(req, res) {
+    const id = req.params.id;
+
+    Patient.findByPk(id, {
+      include: {
+        model: Doctor,
+      },
+    })
+      .then((data) => {
+        res.render("my-cards", { data, formatDate });
+        // res.send(data);
+      })
+      .catch((err) => res.send(err.message));
   }
 }
 

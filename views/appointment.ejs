@@ -1,0 +1,53 @@
+<%- include("./part/header.ejs") %>
+    <div class="Header">
+        <div class="addCast" style="display: inline-block;">
+            <h1 style="margin: 90px 60px;"><%= doctor.getNameDr() %> </h1>
+        </div>
+        <div class="addCast" style="margin-bottom: 100px; float: right; margin-right: 100px; margin-top: 60px;">
+            <div>
+                <h2>Add Patient:</h2>
+            </div>
+            <form action="/doctor/appointment/<%= doctor.id %> " method="POST">
+                <div class="mb-3">
+                    <label>name</label>
+                    <select name="name">
+                        <option selected disabled>--Select Your Name--</option>
+                        <% patient.forEach(el => {%>
+                            <option value="<%= el.id%>"><%= el.fullName() %> </option>
+                        <%}) %> 
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Appointment</label>
+                    <input type="date" name="appointment">
+                </div>
+                <button type="submit" class="btn btn-primary">SAVE</button>
+                <a class="btn btn-primary" href="/doctor" role="button">CANCEL</a>
+            </form>
+        </div>
+        <div style="margin-right: 20px; margin-left: 20px; margin-top: 70px;">
+            <h1 style="padding: 2px;">List Patients</h1>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Name Patient</th>
+                        <th scope="col">Appointment</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% doctor.Patients.forEach(el => {%>
+                    <tr>
+                        <th scope="row"><%= el.fullName()%></th>
+                        <td><%= formatDate(el.PatientDoctor.appointment) %> </td>
+                        <%}) %> 
+                        <td><a href="/doctor/patient/isDone/<%= doctor.id %> ">
+                            <button type="button" class="btn btn-warning">Done</button>
+                        </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  margin: 0;
+  font-weight: 300;
+}
+
+.cover {
+  /* background: #bcf3f0; */
+  background: url("/public/css/images/backpink.jpg") no-repeat center
+    center/cover;
+  height: 100vh;
+  position: relative;
+}
+
+.cover .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 0 20px;
+}
+
+h1 {
+  color: #c17089;
+}
+
+.cover .content h1 {
+  font-size: 55px;
+  display: flex;
+  align-items: center;
+  font-family: "Alfa Slab One", cursive;
+}
