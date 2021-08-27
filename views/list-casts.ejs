@@ -1,0 +1,52 @@
+<%- include("../partials/header.ejs", {title: "List Patients"}) %> 
+  <%- include("../partials/navbar.ejs") %> 
+    <div class="context">
+      <h1>List Patients</h1>
+        <a href="/casts/add">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            style="margin-bottom: 5px"
+          >
+            Add Patients
+          </button> 
+       </a><br /><br />
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>Birth Year</th>
+              <th>Gender</th>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach(el => {%>
+            <tr>
+              <td style="text-align: left"><%= el.fullName()%></td>
+              <td><%= el.phone_number%></td>
+              <td><%= el.birth_year%></td>
+              <td><%= el.gender%></td>
+              <td>
+                <a href="/casts/edit/<%= el.id %> "
+                  ><button type="button" class="btn btn-dark">
+                    Edit
+                  </button>
+                </a>
+                
+                <a href="/casts/delete/<%= el.id %> ">
+                  <button type="button" class="btn btn-dark">
+                    Delete
+                  </button>
+                </a>
+                
+                <a href="/casts/see-movies/<%= el.id %> ">
+                  <button type="button" class="btn btn-dark">
+                    Patient Card
+                  </button>
+                </a>
+              </td>
+            </tr>
+            <%}) %>
+          <%- include("../partials/footer.ejs") %> 

@@ -1,14 +1,49 @@
-<%- include("part/header.ejs") %>
-<form action="/patient/add" method="POST">
-  <label for="fname">First name:</label><br />
-  <input type="text" id="fname" name="first_name" /><br />
-  <label for="lname">Last name:</label><br />
-  <input type="text" id="lname" name="last_name" /><br /><br />
-  <label for="age">Age:</label><br />
-  <input type="number" id="age" name="age" /><br /><br />
-  <label for="Illness">Illness:</label><br />
-  <input type="text" id="Illness" name="Illness" /><br /><br />
-  <input type="submit" value="Submit" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <title>Add Patient</title>
+  </head>
+  <body>
+<div style="margin: 0px 100px;">
+  <h1>Add Doctor</h1>
+<% let firstnameError = null %> 
+  <% let lastError = null %> 
+  <% let ageError = null %> 
+  <% let illnessError = null %> 
+  <% errors.forEach(el => {%>
+          <% el === "Validation error: first name must be filled"? firstnameError = "first name must be filled" : "" %>
+          <% el === "Validation error: last name must be filled"? lastError = "last name must be filled" : "" %>
+          <% el === "Validation error: minimum age is 1 and age must be filled"? ageError = "minimum age is 1 and age must be filled" : "" %>
+          <% el === "notNull Violation: illness must be filled"? illnessError = "illness must be filled" : "" %>
+  <%}) %>
+<form action="/patient/add" method="POST" >
+  <div class="mb-3" style="padding: 0px;">
+  <label for="fname" class="form-label">First name:</label><br />
+  <input type="text" id="fname" name="first_name" class="form-control"/><br />
+  <p style="color: red;"><%= firstnameError %> </p>
+  <label for="lname" class="form-label">Last name:</label><br />
+  <input type="text" id="lname" name="last_name" class="form-control"/><br /><br />
+  <p style="color: red;"><%= lastError %> </p>
+  <label for="age" class="form-label">Age:</label><br />
+  <input type="number" id="age" name="age"class="form-control" /><br /><br />
+  <p style="color: red;"><%= ageError %> </p>
+  <label for="illness" class="form-label">Illness:</label><br />
+  <input type="text" id="illness" name="illness"class="form-control" /><br /><br />
+  <p style="color: red;"><%= illnessError %> </p>
+  </div>
+  <button type="submit" class="btn btn-success">ADD NOW</button>
+  <a href="/patient">
+    <button type="button" class="btn btn-warning">BACK</button>
+  </a>
 </form>
 <!-- Optional JavaScript; choose one of the two! -->
 <%- include("part/footer.ejs") %>

@@ -21,13 +21,48 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "PatientId",
       });
     }
+
+    static formatAge(num) {
+      return `${num} tahun`;
+    }
   }
   Patient.init(
     {
-      first_name: DataTypes.STRING,
-      last_name: DataTypes.STRING,
-      age: DataTypes.INTEGER,
-      illness: DataTypes.STRING,
+      first_name: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "first name must be filled",
+          },
+        },
+      },
+      last_name:{
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "last name must be filled",
+          },
+        },
+      },
+      age: {
+        type: DataTypes.INTEGER,
+        validate: {
+          customValidator(value) {
+            if (value <= 0 || value === null) {
+              throw new Error(`minimum age is 1 and age must be filled`)
+            } 
+          }
+        },  
+      },
+      illness: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "illness must be filled",
+          },
+        },
+      },
     },
     {
       hooks: {

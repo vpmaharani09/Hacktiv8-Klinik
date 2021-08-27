@@ -22,9 +22,31 @@ module.exports = (sequelize, DataTypes) => {
   }
   Doctor.init(
     {
-      name: DataTypes.STRING,
-      gender: DataTypes.STRING,
-      specialist: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "name must be filled",
+          },
+        },
+      },
+      gender: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "gender must be filled",
+          },
+        },
+      },
+      specialist: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "specialist must be filled",
+          },
+        },
+      },
     },
     {
       sequelize,

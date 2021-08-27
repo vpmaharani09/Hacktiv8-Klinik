@@ -1,20 +1,38 @@
-<%- include("part/header.ejs",{data:"Add Cast"}) %>
-<a href="/patient/add">Add Patient</a>
-
-<form action="/patient/search" method="POST">
-  <label for="fname">Search Name:</label><br />
-  <input type="text" id="fname" name="search" /><br />
-  <input type="submit" value="Submit" />
-</form>
-<table style="width: 100%">
-  <tr>
+<%- include("./partials/header.ejs", {title: "List Patients"}) %> 
+  <%- include("./partials/navbar.ejs") %> 
+    <div class="context">
+      <h1>List Patients</h1>
+        <a href="/patient/add" style="float: right; text-align: right;">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            style="margin-bottom: 5px; float: right;"
+          >
+            Add Patients
+          </button> 
+       </a><br />
+       <div>
+         <%= pengunjung %> 
+       </div>
+       <div class="container-fluid">
+        <form action="/patient/search" method="POST" class="d-flex">
+          <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    <br />
+<table class="table table-hover">
+  <thead>
+    <tr>
     <th>No</th>
     <th>Name</th>
     <th>Age</th>
     <th>Illness</th>
     <th>Action</th>
-  </tr>
-  <% for( let i = 0; i < data.length; i++ ) { %>
+    </tr>
+  </thead>
+  <tbody>
+    <% for( let i = 0; i < data.length; i++ ) { %>
 
   <tr>
     <td><%= i+1 %></td>
@@ -22,14 +40,26 @@
     <td><%= data[i].age %></td>
     <td><%= data[i].illness %></td>
     <td>
-      <a href="/patient/<%=data[i].id%>/edit">Edit</a> |
-      <a href="/patient/<%=data[i].id%>/delete">Delete</a> |
-      <a href="/patient/myCards/<%=data[i].id%>"> appointment</a>
+      <a href="/patient/<%=data[i].id%>/edit">
+        <button type="button" class="btn btn-dark">
+          Edit
+        </button>
+      </a>
+                
+      <a href="/patient/<%=data[i].id%>/delete">
+        <button type="button" class="btn btn-dark">
+          Delete
+        </button>
+      </a>
+                
+      <a href="/patient/myCards/<%=data[i].id%>">
+        <button type="button" class="btn btn-dark">
+          Patient Card
+        </button>
+      </a>
     </td>
   </tr>
-
   <% } %>
-</table>
 
 <!-- Optional JavaScript; choose one of the two! -->
-<%- include("part/footer.ejs") %>
+          <%- include("./partials/footer.ejs") %> 

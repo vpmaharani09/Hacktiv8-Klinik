@@ -19,15 +19,19 @@ body {
 /* COVER */
 
 .layout {
-  background: black;
+  background: rgb(144, 190, 250);
   height: 100vh;
   position: relative;
+}
+
+p {
+  color: red;
 }
 
 /* text n button */
 
 .layout .context {
-  background: url("/public/css/images/hp.jpg") no-repeat right 10px;
+  background: rgb(255, 175, 175);
 }
 
 .layout .context {
@@ -47,7 +51,7 @@ body {
   justify-content: center;
   text-align: center;
   font-family: "Raleway", sans-serif;
-  color: #e6020c;
+  color: #333;
 }
 
 .table thead {
@@ -56,7 +60,7 @@ body {
 }
 
 .table tbody {
-  background-color: rgb(211, 0, 0);
+  background-color: rgb(204, 134, 134);
   color: #fff;
 }
 

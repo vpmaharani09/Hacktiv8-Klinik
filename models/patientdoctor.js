@@ -19,8 +19,24 @@ module.exports = (sequelize, DataTypes) => {
   PatientDoctor.init(
     {
       DoctorId: DataTypes.INTEGER,
-      PatientId: DataTypes.INTEGER,
-      appointment: DataTypes.DATE,
+      PatientId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "patient must be select",
+          },
+        },
+      },
+      appointment: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "date must be filled",
+          },
+        },
+      },
       isDone: DataTypes.BOOLEAN,
     },
     {

@@ -8,6 +8,13 @@
                 <h2>Add Patient:</h2>
             </div>
             <form action="/doctor/appointment/<%= doctor.id %> " method="POST">
+            <% let patientError = null %> 
+            <% let dateError = null %> 
+
+            <% errors.forEach(el => {%>
+            <% el === "notNull Violation: patient must be select"? patientError = "patient must be select" : "" %>
+            <% el === "notNull Violation: date must be filled"? dateError = "date must be filled" : "" %>
+            <%}) %>
                 <div class="mb-3">
                     <label>name</label>
                     <select name="name">
@@ -16,10 +23,12 @@
                             <option value="<%= el.id%>"><%= el.fullName() %> </option>
                         <%}) %> 
                     </select>
+                    <p><%= patientError %> </p>
                 </div>
                 <div class="mb-3">
                     <label>Appointment</label>
                     <input type="date" name="appointment">
+                    <p><%= dateError %> </p>
                 </div>
                 <button type="submit" class="btn btn-primary">SAVE</button>
                 <a class="btn btn-primary" href="/doctor" role="button">CANCEL</a>
@@ -40,11 +49,16 @@
                     <tr>
                         <th scope="row"><%= el.fullName()%></th>
                         <td><%= formatDate(el.PatientDoctor.appointment) %> </td>
-                        <%}) %> 
-                        <td><a href="/doctor/patient/isDone/<%= doctor.id %> ">
-                            <button type="button" class="btn btn-warning">Done</button>
-                        </a></td>
+                        <%}) %>
+                        <td>
+                            <a href="/doctor/appointment/<%= doctor.id %>/done ">
+                            <button type="button" class="btn btn-warning">DONE</button>
+                            </a>
+                        </td>
                     </tr>
+                    <a href="/doctor">
+                        <button type="button" class="btn btn-dark" style="margin: 5px;">BACK</button>
+                    </a>
                 </tbody>
             </table>
         </div>

@@ -1,22 +1,53 @@
-<%- include("part/header.ejs") %>
-<form action="/doctor/add" method="POST">
-  <label for="fname">Name:</label><br />
-  <input type="text" name="name" /><br />
-  <label>Gender</label>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <title>Add Doctor</title>
+  </head>
+  <body>
+<div style="margin: 0px 100px;">
+  <h1>Add Doctor</h1>
+<form action="/doctor/add" method="POST" >
+  <div class="mb-3" style="padding: 0px;">
+  <% let nameError = null %> 
+  <% let genderError = null %> 
+  <% let specialistError = null %> 
+  <% errors.forEach(el => {%>
+          <% el === "Validation error: name must be filled"? nameError = "name must be filled" : "" %>
+          <% el === "notNull Violation: gender must be filled"? genderError = "gender must be filled" : "" %>
+          <% el === "Validation error: specialist must be filled"? specialistError = "specialist must be filled" : "" %>
+  <%}) %>
+  <label for="fname" class="form-label">Name:</label><br />
+  <input type="text" name="name" class="form-control"/><br />
+  <p style="color: red;"><%= nameError %> </p>
   <br />
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="gender" value="female" />
-    <label class="form-check-label" for="inlineRadio1">female</label>
+  <label class="form-label">Gender</label>
+  <br />
+  <select name="gender" class="form-select">
+    <option selected disabled>--Please Select--</option>
+    <option value="female">female</option>
+    <option value="male">male</option>
+  </select>
+  <p style="color: red;"><%= genderError %> </p>
+  <br />
+  <br />
+  <label class="form-label" >Specialist:</label><br />
+  <input type="text" name="specialist" class="form-control"/><br />
+  <p style="color: red;"><%= specialistError %> </p><br />
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="gender" value="male" />
-    <label class="form-check-label" for="inlineRadio1">male</label>
-  </div>
-  <br />
-  <br />
-  <label for="age">Specialist:</label><br />
-  <input type="text" name="specialist" /><br /><br />
-  <input type="submit" value="Submit" />
+  <button type="submit" class="btn btn-success">ADD NOW</button>
+  <a href="/doctor">
+    <button type="button" class="btn btn-warning">BACK</button>
+  </a>
 </form>
+</div>
 <!-- Optional JavaScript; choose one of the two! -->
 <%- include("part/footer.ejs") %>

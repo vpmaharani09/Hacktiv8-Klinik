@@ -1,5 +1,6 @@
 const { Patient, Doctor } = require("../models");
 const formatDate = require("../helpers/helperRani");
+const {insertEvent, dateTimeForCalander} = require("../calender")
 
 class PatientController {
   static getEditPatient(req, res) {
@@ -64,10 +65,70 @@ class PatientController {
     })
       .then((data) => {
         res.render("my-cards", { data, formatDate });
-        // res.send(data);
+        
       })
       .catch((err) => res.send(err.message));
   }
-}
+
+  static makeReminder(req, res) {
+    const id = req.params.id
+
+    Patient.findByPk(id, {
+      include: {
+        model: Doctor
+      }
+    })
+    .then((data) => {
+
+      let patient = null
+      let doctor = ""
+      let date = null
+
+      patient = data.first_name
+
+      data.Doctors.forEach(el => {
+        doctor = el.name
+        date = el.PatientDoctor.appointment.toISOString().slice(0, 10)
+
+        
+      let dateTime = dateTimeForCalander(date);
+
+      // Event for Google Calendar
+      let event = {
+          'summary': `${doctor}`,
+          'description': `${patient}`,
+          'start': {
+              'dateTime': dateTime['start'],
+              'timeZone': 'Asia/Jakarta'
+          },
+          'end': {
+              'dateTime': dateTime['end'],
+              'timeZone': 'Asia/Jakarta'
+          }
+      };
+
+      insertEvent(event)
+          .then((res) => {
+              console.log(res)
+          })
+          .catch((err) => {
+              console.log(err);
+          });
+          })
+
+        
+          res.redirect("/patient")
+
+        }
+
+    )}
+    
+
+  }
+
+      
+    
+  
+
 
 module.exports = PatientController;
