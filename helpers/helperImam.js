@@ -15,7 +15,7 @@ function generateNameFirstLast(string) {
 
 let checkOpenClinic = (req, res, next) => {
 	if (new Date().getDay() == 6 || new Date().getDay() == 0) {
-		console.log("clinik tutup sabtu dan minggu");// 
+		console.log("klinik tutup sabtu dan minggu");// 
 		// res.render("home", { data: { middleware:"clinik tutup sabtu dan minggu"}})
 		res.render("home")
 		// res.send("klinik tutup")// res.render // redirect
